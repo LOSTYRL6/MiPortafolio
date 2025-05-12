@@ -1,0 +1,21 @@
+  //   🟩 1. TIPOS DE ANIMACIÓN
+
+  //   - gsap.to(elemento, { propiedades })
+  //       → anima desde el estado actual hacia otro
+
+  //   - gsap.from(elemento, { propiedades })
+  //       → anima desde un estado inicial hacia su estado actual
+
+  //   - gsap.fromTo(elemento, { desde }, { hasta })
+  //       → anima desde un estado específico hacia otro
+
+  // 3. Propiedades comunes para animar:
+  // - **x, y**: Controlan el desplazamiento horizontal y vertical del elemento. "x: '100%'" lo mueve completamente a la derecha y el posicion incial es 0%.
+  // - **scaleX, scaleY**: Controlan la escala del elemento en los ejes X y Y. "scaleY: 0" lo colapsa verticalmente, "scaleY: 1" lo restaura.
+  // - **opacity**: Controla la opacidad del elemento, de 0 (invisible) a 1 (totalmente visible).
+  // - **rotation**: Rota el elemento en grados. Ejemplo: "rotation: 180" gira 180 grados.
+  // - **ease**: Controla el tipo de transición de la animación. Ejemplo: "power2.out", "easeOut", "linear".
+
+  // En nuestro código, cuando el usuario hace clic en el icono, usamos `gsap` para animar el contenedor de opciones de usuario:
+  // - Primero, con gsap.fromTo() animamos la entrada del contenedor de opciones, **expandiéndolo desde la parte superior** con `scaleY: 0` y `opacity: 0`, a su tamaño original con `scaleY: 1` y `opacity: 1`.
+  // - Luego, si el contenedor ya está visible, usamos `gsap.to()` para animar su ocultación: **colapsamos** el contenedor con `scaleY: 0` y `opacity: 0` y una vez que termina la animación, lo ocultamos con `display: "none"`.
