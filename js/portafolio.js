@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const myImagen = document.getElementById("myImagen");
   const MyNombre = document.getElementById("MyNombre");
   const Mybody = document.querySelector(".Mybody");
+  const TextodespuesdelTexto = document.querySelector(".TextodespuesdelTexto");
 
   if (Bienvenido && BienvenidoTexto) {
     // Animación del contenedor principal
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
     Bienvenido.addEventListener("click", () => {
+      // Oculta el texto principal
       gsap.to(BienvenidoTexto, {
         opacity: 0,
         y: -30,
@@ -32,50 +34,87 @@ document.addEventListener("DOMContentLoaded", function () {
         },
       });
 
+      // Expande el contenedor
       gsap.to(Bienvenido, {
         width: "100%",
         height: "100%",
         duration: 2,
         ease: "power2.out",
-        onComplete: MostrarElVerdaderoMenu,
+        onComplete: () => {
+          // Muestra el texto "Mostrando el Portafolio"
+          gsap.fromTo(
+            TextodespuesdelTexto,
+            {
+              display: "block",
+              scaleX: 0,
+              opacity: 0,
+              transformOrigin: "center",
+            },
+            {
+              scaleX: 1,
+              opacity: 1,
+              duration: 1,
+              ease: "power2.out",
+            }
+          );
+
+          // Espera un momento para que se vea el texto, luego cambia al menú
+          setTimeout(MostrarElVerdaderoMenu, 1500);
+        },
       });
     });
   }
 
   function MostrarElVerdaderoMenu() {
+    // Cambia el fondo del menú principal
     PortafolioHome.style.background =
-      "linear-gradient(to bottom right,rgb(47, 154, 14),rgb(46, 46, 152))";
+      "linear-gradient(to bottom right, rgb(47, 154, 14), rgb(46, 46, 152))";
 
-    gsap.to(Bienvenido, {
-      width: "0%",
-      height: "0%",
-      duration: 2,
-      ease: "power2.out",
+    // Oculta el texto "Mostrando el Portafolio"
+    gsap.to(TextodespuesdelTexto, {
+      scaleX: 0,
+      opacity: 0,
+      transformOrigin: "center",
+      duration: 1,
+      ease: "power2.in",
       onComplete: () => {
-        document.body.style.height = "100%";
-        Bienvenido.style.display = "none";
-        MiPerfil.style.display = "flex";
-        gsap.from(MiPerfil, {
-          opacity: 0,
-          scaleX: 0,
-          scaleY: 0,
-          transformOrigin: "top left", // <-- Clave
-          duration: 0.5,
+        TextodespuesdelTexto.style.display = "none";
+
+        // Contrae el contenedor de bienvenida
+        gsap.to(Bienvenido, {
+          width: "0%",
+          height: "0%",
+          duration: 2,
           ease: "power2.out",
           onComplete: () => {
-            myImagen.style.opacity = "1";
-            gsap.from(myImagen, {
+            document.body.style.height = "100%";
+            Bienvenido.style.display = "none";
+            MiPerfil.style.display = "flex";
+
+            // Muestra el perfil con animación
+            gsap.from(MiPerfil, {
               opacity: 0,
-              y: 20,
+              scaleX: 0,
+              scaleY: 0,
+              transformOrigin: "top left",
               duration: 0.5,
               ease: "power2.out",
               onComplete: () => {
-                MyNombre.style.opacity = "1";
-                gsap.from(MyNombre, {
-                  scaleX: 2,
-                  scaleY: 2,
-                  transformOrigin: "center",
-                  duration: 1,
+                myImagen.style.opacity = "1";
+                gsap.from(myImagen, {
+                  opacity: 0,
+                  y: 20,
+                  duration: 0.5,
+                  ease: "power2.out",
+                  onComplete: () => {
+                    MyNombre.style.opacity = "1";
+                    gsap.from(MyNombre, {
+                      scaleX: 2,
+                      scaleY: 2,
+                      transformOrigin: "center",
+                      duration: 1,
+                    });
+                  },
                 });
               },
             });
