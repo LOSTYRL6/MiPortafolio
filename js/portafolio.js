@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const BienvenidoTexto = document.getElementById("BienvenidoTexto");
   const PortafolioHome = document.querySelector(".PortafolioHome");
   const MiPerfil = document.querySelector(".MiPerfil");
+  const myImagen = document.getElementById("myImagen");
+  const MyNombre = document.getElementById("MyNombre");
   const Mybody = document.querySelector(".Mybody");
 
   if (Bienvenido && BienvenidoTexto) {
@@ -42,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function MostrarElVerdaderoMenu() {
     PortafolioHome.style.background =
-      "linear-gradient(to bottom right, #8b00ff, #00e571)";
+      "linear-gradient(to bottom right,rgb(47, 154, 14),rgb(46, 46, 152))";
 
     gsap.to(Bienvenido, {
       width: "0%",
@@ -58,8 +60,26 @@ document.addEventListener("DOMContentLoaded", function () {
           scaleX: 0,
           scaleY: 0,
           transformOrigin: "top left", // <-- Clave
-          duration: 1,
+          duration: 0.5,
           ease: "power2.out",
+          onComplete: () => {
+            myImagen.style.opacity = "1";
+            gsap.from(myImagen, {
+              opacity: 0,
+              y: 20,
+              duration: 0.5,
+              ease: "power2.out",
+              onComplete: () => {
+                MyNombre.style.opacity = "1";
+                gsap.from(MyNombre, {
+                  scaleX: 2,
+                  scaleY: 2,
+                  transformOrigin: "center",
+                  duration: 1,
+                });
+              },
+            });
+          },
         });
       },
     });

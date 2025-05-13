@@ -39,12 +39,12 @@ body {
 }
 
 .MiPerfil {
-  width: 90%;
+  width: 70%;
   height: auto;
   min-height: 1200px;
   border: solid white 1px;
   display: none;
-  background-color: rgba(205, 205, 205, 0.547);
+  background-color: rgba(98, 98, 98, 0.404);
   margin: 5%;
   justify-content: center;
 }

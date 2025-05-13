@@ -5,20 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="css/myCss.css" />
+    <style>
+      .glitch {
+        display: none;
+      }
+      .glitch.active {
+        display: block;
+      }
+    </style>
   </head>
   <body>
     <div class="Mybody">
       <div class="loader">
-        <div data-glitch="Cargando mi Portafolio" class="glitch">
-          Cargando mi Portafolio
+        <div data-glitch="Error al Cargar el Portafolio" class="glitch">
+          Error al Cargar el Portafolio
+        </div>
+        <div data-glitch="Solucionando el problema" class="glitch">
+          Solucionando el problema
+        </div>
+        <div data-glitch="Problema en processo" class="glitch">
+          Problema en processo
+        </div>
+        <div data-glitch="Solucionado gracias por la espera" class="glitch">
+          Solucionado gracias por la espera
         </div>
       </div>
     </div>
-  </body>
+    <script>
+      const glitches = document.querySelectorAll(".glitch");
+      const myBody = document.querySelector(".Mybody");
+      let current = 0;
 
-  <script>
-    setTimeout(() => {
-      window.location.href = "html/Home.html";
-    }, 6000);
-  </script>
+      function showNextGlitch() {
+        if (current > 0) {
+          glitches[current - 1].classList.remove("active");
+        }
+
+        if (current < glitches.length) {
+          glitches[current].classList.add("active");
+
+          // Cuando llega al último mensaje
+          if (current === glitches.length - 1) {
+            myBody.classList.add("no-glitch");
+            glitches[current].classList.add("no-glitch");
+          }
+
+          current++;
+          setTimeout(showNextGlitch, 3000);
+        } else {
+          window.location.href = "html/Home.html";
+        }
+      }
+
+      showNextGlitch();
+    </script>
+  </body>
 </html>
