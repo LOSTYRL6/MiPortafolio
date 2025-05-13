@@ -1,15 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
   const Bienvenido = document.getElementById("Bienvenido");
   const BienvenidoTexto = document.getElementById("BienvenidoTexto");
+  const Bienvenido2 = document.getElementById("Bienvenido2");
   const PortafolioHome = document.querySelector(".PortafolioHome");
   const MiPerfil = document.querySelector(".MiPerfil");
   const myImagen = document.getElementById("myImagen");
   const MyNombre = document.getElementById("MyNombre");
   const Mybody = document.querySelector(".Mybody");
   const TextodespuesdelTexto = document.querySelector(".TextodespuesdelTexto");
+  const misOpciones = document.querySelector(".misOpciones");
 
   if (Bienvenido && BienvenidoTexto) {
-    // Animación del contenedor principal
     gsap.fromTo(
       Bienvenido,
       { scaleY: 0, scaleX: 0, opacity: 0 },
@@ -19,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         opacity: 1,
         duration: 1,
         ease: "power2.out",
-        onComplete: animarTexto, // Después del contenedor, animar letras
+        onComplete: animarTexto,
       }
     );
 
@@ -30,7 +31,14 @@ document.addEventListener("DOMContentLoaded", function () {
         y: -30,
         duration: 0.5,
         onComplete: () => {
-          BienvenidoTexto.style.display = "none";
+          gsap.to(Bienvenido2, {
+            opacity: 0,
+            y: -30,
+            duration: 0.5,
+            onComplete: () => {
+              BienvenidoTexto.style.display = "none";
+            },
+          });
         },
       });
 
@@ -41,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
         duration: 2,
         ease: "power2.out",
         onComplete: () => {
-          // Muestra el texto "Mostrando el Portafolio"
           gsap.fromTo(
             TextodespuesdelTexto,
             {
@@ -113,6 +120,16 @@ document.addEventListener("DOMContentLoaded", function () {
                       scaleY: 2,
                       transformOrigin: "center",
                       duration: 1,
+                      onComplete: () => {
+                        misOpciones.style.opacity = "1";
+                        gsap.from(misOpciones, {
+                          opacity: 0,
+                          scaleY: 0,
+                          transformOrigin: "top",
+                          duration: 1,
+                          ease: "power2.out",
+                        });
+                      },
                     });
                   },
                 });
@@ -152,6 +169,15 @@ document.addEventListener("DOMContentLoaded", function () {
         duration: 0.5,
         stagger: 0.1,
         ease: "power2.out",
+        onComplete: () => {
+          Bienvenido2.style.opacity = "1";
+          gsap.from(Bienvenido2, {
+            opacity: 0,
+            y: 20,
+            duration: 0.5,
+            ease: "power2.out",
+          });
+        },
       }
     );
   }

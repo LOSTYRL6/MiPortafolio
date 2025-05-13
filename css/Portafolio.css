@@ -40,17 +40,23 @@ body {
   justify-content: center;
   align-items: center;
   background-color: black;
+  cursor: pointer;
+  flex-direction: column;
+}
+#Bienvenido2 {
+  opacity: 0;
 }
 
 .MiPerfil {
+  flex-direction: column;
   width: 70%;
-  height: auto;
-  min-height: 1200px;
+  height: 100%;
+  padding: 10px;
   border: solid white 1px;
+  align-items: center;
   display: none;
   background-color: rgba(98, 98, 98, 0.404);
   margin: 5%;
-  justify-content: center;
 }
 .MiInformacion {
   width: 75%;
@@ -60,8 +66,62 @@ body {
   height: 300px;
   border: solid white 1px;
 }
+.misOpciones {
+  opacity: 0;
+  margin-top: 10px;
+  width: 90%;
+  display: flex;
+  height: auto;
+  border: solid white 1px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.OpcionesTitulo {
+  width: 100%;
+  height: auto;
+  margin: 20px;
+}
+.OpcionesTitulo h1 {
+  font-size: 60px;
+}
 .MiInformacion img {
   width: 25%;
   border-radius: 25%;
   height: 90%;
+  align-items: center;
+  display: flex;
+}
+.Opciones {
+  display: flex;
+  width: 100%;
+  min-height: 200px;
+  height: auto;
+  flex-wrap: wrap;
+  align-items: center;
+  border: solid white 1px;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+.LosOpciones {
+  width: 30%;
+  height: 300px;
+  border: solid white 1px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 30px;
+  transition: transform 0.3s ease; /* <-- Transición suave */
+  cursor: pointer;
+}
+
+.LosOpciones:hover {
+  transform: scale(1.05); /* <-- Escala un poco más grande al pasar el ratón */
+}
+.LosOpciones img {
+  width: 75%;
+  height: 75%;
 }
