@@ -18,65 +18,146 @@ document.addEventListener("DOMContentLoaded", function () {
   const InformacionConfiguracionInformacion = document.querySelector(
     ".InformacionConfiguracionInformacion"
   );
-  configuracionOpciones.addEventListener("click", () => {
-    gsap.to(portafolioHome, {
-      backgroundPosition: "0% 0%",
-      duration: 5,
-      ease: "power2.out",
+
+  const Sobremi = document.getElementById("Sobremi");
+  const ClickSobreMi = document.getElementById("ClickSobreMi");
+  const SalidaSobreMi = document.getElementById("SalidaSobreMi");
+
+  const miConocimientos = document.getElementById("miConocimientos");
+  const ClickConocimientos = document.getElementById("ClickConocimientos");
+  const SalidaConocimientos = document.getElementById("SalidaConocimientos");
+
+  const MisProyectos = document.getElementById("MisProyectos");
+  const ClickProyectos = document.getElementById("ClickProyectos");
+  const SalidasProyectos = document.getElementById("SalidasProyectos");
+
+  const MiExperiencia = document.getElementById("MiExperiencia");
+  const ClickExperiencia = document.getElementById("ClickExperiencia");
+  const SalidaExperiencia = document.getElementById("SalidaExperiencia");
+
+  function animarSalidaPerfil({
+    trigger,
+    mostrarElemento,
+    movimiento = { x: 0, y: 200 },
+  }) {
+    trigger.addEventListener("click", () => {
+      gsap.to(portafolioHome, {
+        backgroundPosition: "0% 0%",
+        duration: 5,
+        ease: "power2.out",
+      });
+
+      gsap.to(miPerfil, {
+        ...movimiento,
+        duration: 1,
+        opacity: 0,
+        ease: "power2.out",
+        onComplete: () => {
+          miPerfil.style.display = "none";
+          document.body.style.height = "100vh";
+          mostrarElemento.style.display = "flex";
+          mostrarElemento.style.opacity = "1";
+
+          gsap.from(mostrarElemento, {
+            x: -movimiento.x || 0,
+            y: -movimiento.y || 0,
+            opacity: 0,
+            duration: 1,
+            ease: "power2.out",
+          });
+        },
+      });
     });
-    gsap.to(miPerfil, {
-      x: 200,
-      y: 200,
-      duration: 1,
-      opacity: 0,
-      ease: "power2.out",
-      onComplete: () => {
-        miPerfil.style.display = "none";
-        document.body.style.height = "100vh";
-        if ((EstiloOscuro = false)) {
-          portafolioHome.style.background =
-            "linear-gradient(to bottom right, rgb(47, 154, 14) 60%, rgb(46, 46, 152) 100%)";
-        }
-        clickConfiguracion.style.display = "flex";
-        clickConfiguracion.style.opacity = "1";
-        gsap.from(clickConfiguracion, {
-          x: -200,
-          y: -200,
-          opacity: 0,
-          duration: 1,
-          ease: "power2.out",
-        });
-      },
-    });
+  }
+
+  animarSalidaPerfil({
+    trigger: configuracionOpciones,
+    mostrarElemento: clickConfiguracion,
+    movimiento: { x: 200, y: 200 },
   });
 
-  SalidaConfiguracion.addEventListener("click", () => {
-    // Oculta el menú de configuración con animación inversa
-    gsap.to(clickConfiguracion, {
-      x: -200,
-      y: -200,
-      opacity: 0,
-      duration: 1,
-      ease: "power2.in",
-      onComplete: () => {
-        gsap.set(clickConfiguracion, { clearProps: "transform" });
+  animarSalidaPerfil({
+    trigger: Sobremi,
+    mostrarElemento: ClickSobreMi,
+    movimiento: { x: 0, y: 200 },
+  });
 
-        // Oculta el menú de configuración
-        clickConfiguracion.style.display = "none";
-        document.body.style.height = "100%";
-        if ((EstiloOscuro = false)) {
-          portafolioHome.style.background =
-            "linear-gradient(to bottom right, rgb(47, 154, 14), rgb(46, 46, 152))";
-        }
-        // Muestra MiPerfil y lo anima de regreso
-        miPerfil.style.display = "flex";
-        gsap.fromTo(
-          miPerfil,
-          { x: 200, y: 200, opacity: 0 },
-          { x: 0, y: 0, opacity: 1, duration: 1, ease: "power2.out" }
-        );
-      },
+  animarSalidaPerfil({
+    trigger: miConocimientos,
+    mostrarElemento: ClickConocimientos,
+    movimiento: { x: -200, y: 200 },
+  });
+  animarSalidaPerfil({
+    trigger: MisProyectos,
+    mostrarElemento: ClickProyectos,
+    movimiento: { x: 200, y: -200 },
+  });
+  animarSalidaPerfil({
+    trigger: MiExperiencia,
+    mostrarElemento: ClickExperiencia,
+    movimiento: { x: -200, y: -200 },
+  });
+
+  function animarEntradaPerfil({
+    trigger,
+    ocultarElemento,
+    salida = { x: 0, y: -200 },
+    entrada = { x: 0, y: 200 },
+  }) {
+    trigger.addEventListener("click", () => {
+      gsap.to(ocultarElemento, {
+        ...salida,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.in",
+        onComplete: () => {
+          gsap.set(ocultarElemento, { clearProps: "transform" });
+          ocultarElemento.style.display = "none";
+          document.body.style.height = "100%";
+          miPerfil.style.display = "flex";
+          gsap.fromTo(
+            miPerfil,
+            { ...entrada, opacity: 0 },
+            { x: 0, y: 0, opacity: 1, duration: 1, ease: "power2.out" }
+          );
+        },
+      });
     });
+  }
+
+  animarEntradaPerfil({
+    trigger: SalidaConfiguracion,
+    ocultarElemento: clickConfiguracion,
+    salida: { x: -200, y: -200 },
+    entrada: { x: 200, y: 200 },
+  });
+
+  animarEntradaPerfil({
+    trigger: SalidaSobreMi,
+    ocultarElemento: ClickSobreMi,
+    salida: { y: -200 },
+    entrada: { y: 200 },
+  });
+
+  animarEntradaPerfil({
+    trigger: SalidaConocimientos,
+    ocultarElemento: ClickConocimientos,
+    salida: { x: 200, y: -200 },
+    entrada: { x: -200, y: 200 },
+  });
+
+  animarEntradaPerfil({
+    trigger: SalidasProyectos,
+    ocultarElemento: ClickProyectos,
+    salida: { x: -200, y: 200 },
+    entrada: { x: 200, y: -200 },
+  });
+
+  animarEntradaPerfil({
+    trigger: SalidaExperiencia,
+    ocultarElemento: ClickExperiencia,
+    salida: { x: 200, y: 200 },
+    entrada: { x: -200, y: -200 },
   });
 
   function aplicarEstilo({ oscuro, fondo, colorTexto, mostrarImagen }) {
