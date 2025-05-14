@@ -70,115 +70,108 @@ document.addEventListener("DOMContentLoaded", function () {
         },
       });
     });
-  }
 
-  function MostrarElVerdaderoMenu() {
-    // Cambia el fondo del menú principal
-    PortafolioHome.style.background =
-      "linear-gradient(to bottom right, rgb(47, 154, 14), rgb(46, 46, 152))";
+    function MostrarElVerdaderoMenu() {
+      // Cambia el fondo del menú principal
+      PortafolioHome.style.background =
+        "linear-gradient(to bottom right, rgb(47, 154, 14), rgb(46, 46, 152))";
+      PortafolioHome.style.backgroundSize = "100% 100%";
 
-    // Oculta el texto "Mostrando el Portafolio"
-    gsap.to(TextodespuesdelTexto, {
-      scaleX: 0,
-      opacity: 0,
-      transformOrigin: "center",
-      duration: 1,
-      ease: "power2.in",
-      onComplete: () => {
-        TextodespuesdelTexto.style.display = "none";
-
-        // Contrae el contenedor de bienvenida
-        gsap.to(Bienvenido, {
-          width: "0%",
-          height: "0%",
-          duration: 2,
-          ease: "power2.out",
-          onComplete: () => {
-            document.body.style.height = "100%";
-            Bienvenido.style.display = "none";
-            MiPerfil.style.display = "flex";
-
-            // Muestra el perfil con animación
-            gsap.from(MiPerfil, {
-              opacity: 0,
-              scaleX: 0,
-              scaleY: 0,
-              transformOrigin: "top left",
-              duration: 0.5,
-              ease: "power2.out",
-              onComplete: () => {
-                myImagen.style.opacity = "1";
-                gsap.from(myImagen, {
-                  opacity: 0,
-                  y: 20,
-                  duration: 0.5,
-                  ease: "power2.out",
-                  onComplete: () => {
-                    MyNombre.style.opacity = "1";
-                    gsap.from(MyNombre, {
-                      scaleX: 2,
-                      scaleY: 2,
-                      transformOrigin: "center",
-                      duration: 1,
-                      onComplete: () => {
-                        misOpciones.style.opacity = "1";
-                        gsap.from(misOpciones, {
-                          opacity: 0,
-                          scaleY: 0,
-                          transformOrigin: "top",
-                          duration: 1,
-                          ease: "power2.out",
-                        });
-                      },
-                    });
-                  },
-                });
-              },
-            });
-          },
-        });
-      },
-    });
-  }
-
-  function animarTexto() {
-    const textoOriginal = BienvenidoTexto.textContent;
-    BienvenidoTexto.innerHTML = ""; // Limpiar
-
-    const letras = textoOriginal.split("");
-
-    letras.forEach((letra) => {
-      const span = document.createElement("span");
-      span.textContent = letra;
-      span.style.display = "inline-block";
-      span.style.opacity = "0";
-      BienvenidoTexto.appendChild(span);
-    });
-    BienvenidoTexto.style.opacity = "1";
-
-    // Animar cada letra con GSAP
-    gsap.fromTo(
-      "#BienvenidoTexto span",
-      {
+      // Oculta el texto "Mostrando el Portafolio"
+      gsap.to(TextodespuesdelTexto, {
+        scaleX: 0,
         opacity: 0,
-        y: -50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        stagger: 0.1,
-        ease: "power2.out",
+        transformOrigin: "center",
+        duration: 1,
+        ease: "power2.in",
         onComplete: () => {
-          Bienvenido2.style.opacity = "1";
-          gsap.from(Bienvenido2, {
-            opacity: 0,
-            y: 20,
-            duration: 0.5,
-            ease: "power2.out",
+          TextodespuesdelTexto.style.display = "none";
+          Bienvenido.style.border = "none";
+          // Contrae el contenedor de bienvenida
+          gsap.to(Bienvenido, {
+            scale: 0,
+            borderRadius: "70%",
+            duration: 2,
+            ease: "power2.inOut",
+            transformOrigin: "center center",
+            onComplete: () => {
+              document.body.style.height = "100%";
+              Bienvenido.style.display = "none";
+              MiPerfil.style.display = "flex";
+
+              // Muestra el perfil con animación
+              gsap.from(MiPerfil, {
+                opacity: 0,
+                scaleX: 0,
+                scaleY: 0,
+                transformOrigin: "top left",
+                duration: 0.5,
+                ease: "power2.out",
+                onComplete: () => {
+                  MyNombre.style.opacity = "1";
+                  gsap.from(MyNombre, {
+                    scaleX: 2,
+                    scaleY: 2,
+                    transformOrigin: "center",
+                    duration: 1,
+                    onComplete: () => {
+                      misOpciones.style.opacity = "1";
+                      gsap.from(misOpciones, {
+                        opacity: 0,
+                        scaleY: 0,
+                        transformOrigin: "top",
+                        duration: 1,
+                        ease: "power2.out",
+                      });
+                    },
+                  });
+                },
+              });
+            },
           });
         },
-      }
-    );
+      });
+    }
+
+    function animarTexto() {
+      const textoOriginal = BienvenidoTexto.textContent;
+      BienvenidoTexto.innerHTML = ""; // Limpiar
+
+      const letras = textoOriginal.split("");
+
+      letras.forEach((letra) => {
+        const span = document.createElement("span");
+        span.textContent = letra;
+        span.style.display = "inline-block";
+        span.style.opacity = "0";
+        BienvenidoTexto.appendChild(span);
+      });
+      BienvenidoTexto.style.opacity = "1";
+
+      // Animar cada letra con GSAP
+      gsap.fromTo(
+        "#BienvenidoTexto span",
+        {
+          opacity: 0,
+          y: -50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: "power2.out",
+          onComplete: () => {
+            Bienvenido2.style.opacity = "1";
+            gsap.from(Bienvenido2, {
+              opacity: 0,
+              y: 20,
+              duration: 0.5,
+              ease: "power2.out",
+            });
+          },
+        }
+      );
+    }
   }
 });

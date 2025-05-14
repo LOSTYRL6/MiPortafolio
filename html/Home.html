@@ -6,11 +6,13 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/Portafolio.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/js/portafolio2.js"></script>
     <script src="/js/portafolio.js"></script>
   </head>
   <body id="Mybody">
@@ -21,14 +23,8 @@
         <h1 class="TextodespuesdelTexto">Mostrando el Portafolio</h1>
       </div>
 
-      <div class="MiPerfil">
+      <main class="MiPerfil">
         <div class="MiInformacion">
-          <img
-            src="/Imagenes/fifa.jpg"
-            alt="My foto"
-            id="myImagen"
-            style="opacity: 0"
-          />
           <div
             class="group duration-500 hover:-skew-x-0 skew-x-6 hover:translate-x-2"
             id="MyNombre"
@@ -47,33 +43,42 @@
             <h1>Configuracion</h1>
           </div>
           <div class="Opciones">
-            <div class="LosOpciones">
+            <div class="LosOpciones" id="ConfiguracionOpciones">
               <img src="/Imagenes/configuraciones.png" alt="Configuracion" />
               <h1>Opciones</h1>
             </div>
-            <div class="LosOpciones">
+            <div class="LosOpciones" id="Sobremi">
               <img src="/Imagenes/insignia.png" alt="" />
               <h1>Sobre Mi</h1>
             </div>
-            <div class="LosOpciones">
+            <div class="LosOpciones" id="miConocimientos">
               <img src="/Imagenes/conocimiento-administrativo.png" alt="" />
               <h1>Conocimientos</h1>
             </div>
-            <div class="LosOpciones">
+            <div class="LosOpciones" id="MisProyectos">
               <img src="/Imagenes/portapapeles.png" alt="" />
               <h1>Proyecto</h1>
             </div>
-            <div class="LosOpciones">
+            <div class="LosOpciones" id="MiCurriculum">
               <img src="/Imagenes/curriculum-vitae.png" alt="" />
               <h1>Curriculum</h1>
             </div>
-            <div class="LosOpciones">
+            <div class="LosOpciones" id="MiExperiencia">
               <img src="/Imagenes/maletin.png" alt="" />
               <h1>Experiencia</h1>
             </div>
           </div>
         </div>
-      </div>
+      </main>
+
+      <article class="DespuesDelClick" id="ClickConfiguracion">
+        <img
+          src="/Imagenes/x.png"
+          alt="Salida"
+          class="BotondeSalida"
+          id="SalidaConfiguracion"
+        />
+      </article>
     </div>
   </body>
 </html>

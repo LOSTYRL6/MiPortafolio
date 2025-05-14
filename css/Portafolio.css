@@ -21,6 +21,8 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 2;
+  background-size: 200% 200%;
+  background-position: center center;
 }
 
 .texto {
@@ -64,7 +66,6 @@ body {
   display: flex;
   align-items: center;
   height: 300px;
-  border: solid white 1px;
 }
 .misOpciones {
   opacity: 0;
@@ -72,7 +73,6 @@ body {
   width: 90%;
   display: flex;
   height: auto;
-  border: solid white 1px;
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
@@ -99,15 +99,14 @@ body {
   height: auto;
   flex-wrap: wrap;
   align-items: center;
-  border: solid white 1px;
   justify-content: space-around;
   align-items: center;
   padding: 10px;
 }
 .LosOpciones {
+  position: relative;
   width: 30%;
   height: 300px;
-  border: solid white 1px;
   margin-top: 50px;
   display: flex;
   flex-direction: column;
@@ -124,4 +123,20 @@ body {
 .LosOpciones img {
   width: 75%;
   height: 75%;
+}
+.DespuesDelClick {
+  width: 60%;
+  height: auto;
+  min-height: 500px;
+  border: solid 1px white;
+  display: none;
+  position: relative;
+}
+.BotondeSalida {
+  position: absolute;
+  top: 100;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  z-index: 123;
 }
