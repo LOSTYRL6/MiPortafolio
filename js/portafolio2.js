@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const ClickExperiencia = document.getElementById("ClickExperiencia");
   const SalidaExperiencia = document.getElementById("SalidaExperiencia");
 
+  const progresoScroll = document.querySelector(".progreso-scroll");
+
   function animarSalidaPerfil({
     trigger,
     mostrarElemento,
@@ -166,6 +168,11 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.style.color = colorTexto;
     document.body.style.borderColor = colorTexto;
     MyBodyImagen.style.display = mostrarImagen ? "flex" : "none";
+    if (EstiloOscuro) {
+      progresoScroll.style.background = "#39FF14";
+    } else {
+      progresoScroll.style.background = "#3300ff";
+    }
   }
 
   PredeterminadoColor.addEventListener("click", () => {

@@ -138,7 +138,7 @@ body {
 .DespuesDelClick {
   width: 60%;
   height: auto;
-  min-height: 500px;
+  min-height: 600px;
   border: solid 1px;
   display: none;
   position: relative;
@@ -269,28 +269,42 @@ body {
   display: flex;
 }
 .conocimientosFrontend {
-  width: 90%;
-  max-height: 200px;
+  width: 85%;
+  max-height: 300px;
   height: 500px;
   overflow-y: auto;
   overflow-x: hidden;
-  border: 1px solid;
+  border-radius: 15px;
   position: relative;
+  background: linear-gradient(
+    to bottom right,
+    rgb(104, 227, 66),
+    rgb(111, 111, 217)
+  );
 }
-.cubo {
-  width: 50px;
-  height: 50px;
-  background-color: crimson;
-  position: absolute;
-  left: 0;
-  top: 35%;
-  z-index: 999;
+.conocimientosFrontend::-webkit-scrollbar {
+  display: none; /* Chrome y Safari */
+}
+
+.barra-scroll {
+  width: 80%;
+  height: 6px;
+  background-color: #ddd;
+  border-radius: 4px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.progreso-scroll {
+  height: 100%;
+  width: 0%;
+  background-color: #3300ff;
+  transition: width 0.2s ease-out;
 }
 
 .cuboDelFronted {
   width: 50px;
   height: 50px;
-  background-color: crimson;
   position: sticky;
   top: 50%;
   transform: translateY(-50%);
@@ -298,22 +312,76 @@ body {
 }
 
 .contenido {
-  position: absolute;
   top: 0;
-
-  height: 2000px;
+  height: 1000px;
   z-index: 1;
 }
 .conocimientosFrontend img {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   position: sticky;
 }
+
+/* Posición superior (top: 20px) */
+#HtmlPro,
+#JSPRO,
+#JavaPro,
+#sqlPRo,
+#nodePRo,
+#VuePRo,
+#WordPressPRo {
+  top: 20px;
+}
+
+#CSSPro,
+#boostrapsPRo,
+#PHPPRo,
+#GithubPRo,
+#LaravelPRo,
+#ReactPRo,
+#SanityPRo {
+  top: 230px;
+}
+
 #HtmlPro {
-  top: 10px;
-  left: 80px;
+  left: 70px;
 }
 #CSSPro {
-  top: 130px;
   left: 120px;
+}
+#JSPRO {
+  left: 170px;
+}
+#boostrapsPRo {
+  left: 220px;
+}
+#JavaPro {
+  left: 270px;
+}
+#PHPPRo {
+  left: 320px;
+}
+#sqlPRo {
+  left: 370px;
+}
+#GithubPRo {
+  left: 420px;
+}
+#nodePRo {
+  left: 470px;
+}
+#LaravelPRo {
+  left: 520px;
+}
+#VuePRo {
+  left: 570px;
+}
+#ReactPRo {
+  left: 620px;
+}
+#WordPressPRo {
+  left: 670px;
+}
+#SanityPRo {
+  left: 720px;
 }

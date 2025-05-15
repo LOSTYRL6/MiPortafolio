@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GSAP ScrollTrigger - Cubo Pin</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #111;
+        height: 300vh; /* scroll largo para ver el efecto */
+        font-family: sans-serif;
+      }
+
+      .seccion-fija {
+        height: 100vh;
+        position: relative;
+        background: #222;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cubo {
+        width: 100px;
+        height: 100px;
+        background: red;
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Scroll inicial -->
+    <section
+      style="
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      "
+    >
+      <h1>Haz scroll hacia abajo</h1>
+    </section>
+
+    <!-- Sección fija con cubo animado -->
+    <section class="seccion-fija">
+      <div class="contenedor">
+        <div class="cubo"></div>
+      </div>
+    </section>
+
+    <!-- Scroll final -->
+    <section
+      style="
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      "
+    >
+      <h1>Fin de la animación</h1>
+    </section>
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://unpkg.com/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.to(".cubo", {
+        x: 500,
+        scrollTrigger: {
+          trigger: ".seccion-fija",
+          start: "top top",
+          end: "+=1000", // Cuánto scroll dura la animación
+          scrub: true,
+          pin: true,
+          markers: true, // Puedes quitarlo luego
+        },
+      });
+    </script>
+  </body>
+</html>
