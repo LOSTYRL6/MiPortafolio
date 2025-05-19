@@ -36,11 +36,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const SalidaExperiencia = document.getElementById("SalidaExperiencia");
 
   const progresoScroll = document.querySelector(".progreso-scroll");
+  const cardInt = document.querySelector(".card-int");
 
   function animarSalidaPerfil({
     trigger,
     mostrarElemento,
     movimiento = { x: 0, y: 200 },
+    MyBody,
   }) {
     trigger.addEventListener("click", () => {
       gsap.to(portafolioHome, {
@@ -56,7 +58,11 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "power2.out",
         onComplete: () => {
           miPerfil.style.display = "none";
-          document.body.style.height = "100vh";
+          if (MyBody == true) {
+            document.body.style.height = "100%";
+          } else {
+            document.body.style.height = "100vh";
+          }
           mostrarElemento.style.display = "flex";
           mostrarElemento.style.opacity = "1";
 
@@ -93,6 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
     trigger: MisProyectos,
     mostrarElemento: ClickProyectos,
     movimiento: { x: 200, y: -200 },
+    MyBody: true,
   });
   animarSalidaPerfil({
     trigger: MiExperiencia,
@@ -115,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
         onComplete: () => {
           gsap.set(ocultarElemento, { clearProps: "transform" });
           ocultarElemento.style.display = "none";
-          document.body.style.height = "100%";
+          document.body.style.height = "100vh";
           miPerfil.style.display = "flex";
           gsap.fromTo(
             miPerfil,
@@ -169,9 +176,36 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.style.borderColor = colorTexto;
     MyBodyImagen.style.display = mostrarImagen ? "flex" : "none";
     if (EstiloOscuro) {
-      progresoScroll.style.background = "#39FF14";
+      progresoScroll.style.background = "#39FF14"; // Verde neón
+      cardInt.style.backgroundImage = `linear-gradient(
+        to right bottom,
+        #000000,
+        #003300,
+        #006600,
+        #00aa00,
+        #39ff14,
+        #00aa00,
+        #006600,
+        #003300,
+        #000000
+      )`;
     } else {
-      progresoScroll.style.background = "#3300ff";
+      progresoScroll.style.background = "#3300ff"; // Azul fuerte
+      cardInt.style.backgroundImage = `linear-gradient(
+        to right bottom,
+        #ff0000,
+        #ff0045,
+        #ff0078,
+        #ea00aa,
+        #b81cd7,
+        #8a3ad6,
+        #5746cf,
+        #004ac2,
+        #003d94,
+        #002e66,
+        #001d3a,
+        #020812
+      )`;
     }
   }
 

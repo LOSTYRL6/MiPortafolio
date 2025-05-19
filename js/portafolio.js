@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ease: "power2.inOut",
             transformOrigin: "center center",
             onComplete: () => {
-              document.body.style.height = "100%";
+              document.body.style.height = "100vh";
               Bienvenido.style.display = "none";
               MiPerfil.style.display = "flex";
 

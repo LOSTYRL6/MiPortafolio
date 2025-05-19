@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const container = document.querySelector(".conocimientosFrontend");
   const cubo = document.querySelector(".cuboDelFronted");
   const barraProgreso = document.querySelector(".progreso-scroll");
-
+  const hello = document.querySelector(".hello");
+  const redes = document.querySelector(".MisRedesSociales");
+  const cardInt = document.querySelector(".card-int");
   const icons = [
     "#HtmlPro",
     "#CSSPro",
@@ -77,6 +79,84 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         icon.style.opacity = 0;
       }
+    });
+  });
+
+  cardInt.addEventListener("mouseenter", () => {
+    gsap.to(hello, {
+      y: -100,
+      duration: 0.5,
+      opacity: 0,
+      ease: "power2.out",
+      onComplete: () => {
+        hello.style.display = "none";
+        redes.style.display = "flex";
+
+        // Reseteamos la posición de redes para que empiece desde y=150
+        gsap.set(redes, { y: 100 });
+
+        gsap.to(redes, {
+          y: 0,
+          duration: 0.5,
+          opacity: 1,
+          ease: "power2.out",
+        });
+      },
+    });
+  });
+
+  cardInt.addEventListener("mouseleave", () => {
+    gsap.to(redes, {
+      y: 100,
+      duration: 0.5,
+      opacity: 0,
+      ease: "power2.in",
+      onComplete: () => {
+        hello.style.display = "flex";
+        redes.style.display = "none";
+
+        gsap.to(hello, {
+          y: 0,
+          duration: 0.5,
+          opacity: 1,
+          ease: "power2.out",
+        });
+      },
+    });
+  });
+
+  const proyectos = [
+    { bookId: "GGamers", textoId: "GGamersTexto" },
+    { bookId: "Eina", textoId: "EinaTexto" },
+  ];
+
+  proyectos.forEach(({ bookId, textoId }) => {
+    let animado = false;
+
+    const book = document.getElementById(bookId);
+    const texto = document.getElementById(textoId);
+
+    book.addEventListener("mouseenter", () => {
+      if (animado) return;
+      animado = true;
+
+      gsap.to(book, {
+        x: "-195px",
+        duration: 0.5,
+        ease: "power2.out",
+        onComplete: () => {
+          // Reset posición para evitar que rompa el layout
+          gsap.to(book, { x: 0, duration: 0 });
+
+          // Mostrar el texto después de la animación
+          texto.style.display = "flex";
+          gsap.fromTo(
+            texto,
+            { opacity: 0, x: 50 },
+            { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }
+          );
+        },
+      });
     });
   });
 });
