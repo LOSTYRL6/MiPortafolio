@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const progresoScroll = document.querySelector(".progreso-scroll");
   const cardInt = document.querySelector(".card-int");
+  const ProyectoPropio = document.querySelectorAll(".ProyectoPropio");
 
   function animarSalidaPerfil({
     trigger,
@@ -177,6 +178,9 @@ document.addEventListener("DOMContentLoaded", function () {
     MyBodyImagen.style.display = mostrarImagen ? "flex" : "none";
     if (EstiloOscuro) {
       progresoScroll.style.background = "#39FF14"; // Verde neón
+      ProyectoPropio.forEach((element) => {
+        element.style.borderColor = "#39FF14";
+      });
       cardInt.style.backgroundImage = `linear-gradient(
         to right bottom,
         #000000,
@@ -191,6 +195,9 @@ document.addEventListener("DOMContentLoaded", function () {
       )`;
     } else {
       progresoScroll.style.background = "#3300ff"; // Azul fuerte
+      ProyectoPropio.forEach((element) => {
+        element.style.borderColor = "white";
+      });
       cardInt.style.backgroundImage = `linear-gradient(
         to right bottom,
         #ff0000,

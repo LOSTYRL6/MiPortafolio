@@ -128,6 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const proyectos = [
     { bookId: "GGamers", textoId: "GGamersTexto" },
     { bookId: "Eina", textoId: "EinaTexto" },
+    { bookId: "JavaPixel", textoId: "JavaPixelTexto" },
+    { bookId: "Cientifikis", textoId: "CientifikisText" },
   ];
 
   proyectos.forEach(({ bookId, textoId }) => {
@@ -142,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       gsap.to(book, {
         x: "-195px",
-        duration: 0.5,
+        duration: 1.5,
         ease: "power2.out",
         onComplete: () => {
           // Reset posición para evitar que rompa el layout
