@@ -263,6 +263,11 @@ body {
   align-items: center;
   font-size: 40px;
   display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.TituloConocimientos span {
+  font-size: 15px;
 }
 .conocimientosFrontend {
   width: 850px;
