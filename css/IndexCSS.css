@@ -1,0 +1,249 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.ContenidoPrinciapal {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.ContenidoPrinciapal h1 {
+  font-size: 70px;
+  color: red;
+  animation: parpadeoBrillo 1s infinite alternate;
+}
+#Verde {
+  color: #00e571;
+}
+span {
+  color: red;
+}
+@keyframes parpadeoBrillo {
+  0% {
+    text-shadow: 0 0 2px #ff0000, 0 0 5px #ff4d4d, 0 0 8px #ff0000;
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+.AdvertenciaText {
+  margin: 20px;
+  width: auto;
+  height: auto;
+  font-size: 25px;
+  letter-spacing: 4px;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.OPcionesBotones {
+  width: 50%;
+  height: 100px;
+
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+/* From Uiverse.io by 212004ALJI */
+#SeguirBoton,
+#SeguirBoton::after {
+  padding: 10px 50px;
+  font-size: 20px;
+  border: solid white;
+  border-radius: 5px;
+  color: white;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+}
+
+#SeguirBoton::after {
+  --move1: inset(50% 50% 50% 50%);
+  --move2: inset(31% 0 40% 0);
+  --move3: inset(39% 0 15% 0);
+  --move4: inset(45% 0 40% 0);
+  --move5: inset(45% 0 6% 0);
+  --move6: inset(14% 0 61% 0);
+  clip-path: var(--move1);
+  content: "GLITCH";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+}
+
+#SeguirBoton:hover::after {
+  animation: glitch_4011 1s;
+  text-shadow: 10 10px 10px black;
+  animation-timing-function: steps(2, end);
+  text-shadow: -3px -3px 0px #8b00ff, 3px 3px 0px #00e571;
+  background-color: transparent;
+  border: 3px solid 8b00ff;
+}
+
+#SeguirBoton:hover {
+  text-shadow: -1px -1px 0px #8b00ff, 1px 1px 0px #00e571;
+}
+
+#SeguirBoton:hover {
+  background-color: transparent;
+  border: 1px solid red;
+  box-shadow: 0px 10px 10px -10px red;
+}
+
+/* From Uiverse.io by liceajj */
+.cta {
+  display: flex;
+  padding: 11px 33px;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 25px;
+  color: white;
+  background: #2768b3;
+  transition: 1s;
+  box-shadow: 6px 6px 0 black;
+  transform: skewX(-15deg);
+  border: none;
+  cursor: pointer;
+}
+.cta span {
+  color: white;
+}
+
+.cta:focus {
+  outline: none;
+}
+
+.cta:hover {
+  transition: 0.5s;
+  box-shadow: 10px 10px 0 #869da6;
+}
+
+.cta .second {
+  transition: 0.5s;
+  margin-right: 0px;
+}
+
+.cta:hover .second {
+  transition: 0.5s;
+  margin-right: 45px;
+}
+
+.span {
+  transform: skewX(15deg);
+}
+
+.second {
+  width: 20px;
+  margin-left: 30px;
+  position: relative;
+  top: 12%;
+}
+
+.one {
+  transition: 0.4s;
+  transform: translateX(-60%);
+}
+
+.two {
+  transition: 0.5s;
+  transform: translateX(-30%);
+}
+
+.cta:hover .three {
+  animation: color_anim 1s infinite 0.2s;
+}
+
+.cta:hover .one {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.6s;
+}
+
+.cta:hover .two {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.4s;
+}
+
+@keyframes color_anim {
+  0% {
+    fill: white;
+  }
+
+  50% {
+    fill: #2768b3;
+  }
+
+  100% {
+    fill: white;
+  }
+}
+
+@keyframes glitch_4011 {
+  0% {
+    clip-path: var(--move1);
+    transform: translate(0px, -10px);
+  }
+
+  10% {
+    clip-path: var(--move2);
+    transform: translate(-10px, 10px);
+  }
+
+  20% {
+    clip-path: var(--move3);
+    transform: translate(10px, 0px);
+  }
+
+  30% {
+    clip-path: var(--move4);
+    transform: translate(-10px, 10px);
+  }
+
+  40% {
+    clip-path: var(--move5);
+    transform: translate(10px, -10px);
+  }
+
+  50% {
+    clip-path: var(--move6);
+    transform: translate(-10px, 10px);
+  }
+
+  60% {
+    clip-path: var(--move1);
+    transform: translate(10px, -10px);
+  }
+
+  70% {
+    clip-path: var(--move3);
+    transform: translate(-10px, 10px);
+  }
+
+  80% {
+    clip-path: var(--move2);
+    transform: translate(10px, -10px);
+  }
+
+  90% {
+    clip-path: var(--move4);
+    transform: translate(-10px, 10px);
+  }
+
+  100% {
+    clip-path: var(--move1);
+    transform: translate(0);
+  }
+}
