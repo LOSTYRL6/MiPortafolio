@@ -161,4 +161,30 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
+
+  document.querySelectorAll(".ExperincienaMios").forEach((experiencia) => {
+    const infoExtra =
+      experiencia.querySelector(".InformacionExtra") ||
+      experiencia.querySelector(".InformacionExtra2");
+
+    experiencia.addEventListener("mouseenter", () => {
+      if (infoExtra) {
+        gsap.to(infoExtra, {
+          opacity: 1,
+          duration: 0.5,
+          pointerEvents: "auto",
+        });
+      }
+    });
+
+    experiencia.addEventListener("mouseleave", () => {
+      if (infoExtra) {
+        gsap.to(infoExtra, {
+          opacity: 0,
+          duration: 0.5,
+          pointerEvents: "none",
+        });
+      }
+    });
+  });
 });

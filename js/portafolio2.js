@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const InformacionConfiguracionInformacion = document.querySelector(
     ".InformacionConfiguracionInformacion"
   );
-
   const Sobremi = document.getElementById("Sobremi");
   const ClickSobreMi = document.getElementById("ClickSobreMi");
   const SalidaSobreMi = document.getElementById("SalidaSobreMi");
@@ -38,12 +37,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const progresoScroll = document.querySelector(".progreso-scroll");
   const cardInt = document.querySelector(".card-int");
   const ProyectoPropio = document.querySelectorAll(".ProyectoPropio");
+  const cover = document.querySelectorAll(".cover");
+  const book = document.querySelectorAll(".book");
+  const tag = document.querySelectorAll(".Tag");
+  const ExperincienaMios = document.querySelectorAll(".ExperincienaMios");
+  const linea = document.querySelector(".liniaDeTiempoExperiencia");
+  const InformacionExtra2 = document.querySelectorAll(".InformacionExtra2");
+  const InformacionExtra = document.querySelectorAll(".InformacionExtra");
 
   function animarSalidaPerfil({
     trigger,
     mostrarElemento,
     movimiento = { x: 0, y: 200 },
     MyBody,
+    HacerAnimacion,
   }) {
     trigger.addEventListener("click", () => {
       gsap.to(portafolioHome, {
@@ -73,6 +80,19 @@ document.addEventListener("DOMContentLoaded", function () {
             opacity: 0,
             duration: 1,
             ease: "power2.out",
+            onComplete: () => {
+              if (HacerAnimacion === true) {
+                ExperincienaMios.forEach((el, i) => {
+                  el.style.opacity = "1"; // 👈 manual si quieres
+                  gsap.from(el, {
+                    opacity: 0,
+                    y: 30,
+                    duration: 1,
+                    ease: "power2.out",
+                  });
+                });
+              }
+            },
           });
         },
       });
@@ -106,6 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
     trigger: MiExperiencia,
     mostrarElemento: ClickExperiencia,
     movimiento: { x: -200, y: -200 },
+    HacerAnimacion: true,
   });
 
   function animarEntradaPerfil({
@@ -176,44 +197,83 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.style.color = colorTexto;
     document.body.style.borderColor = colorTexto;
     MyBodyImagen.style.display = mostrarImagen ? "flex" : "none";
-    if (EstiloOscuro) {
-      progresoScroll.style.background = "#39FF14"; // Verde neón
-      ProyectoPropio.forEach((element) => {
-        element.style.borderColor = "#39FF14";
-      });
-      cardInt.style.backgroundImage = `linear-gradient(
-        to right bottom,
-        #000000,
-        #003300,
-        #006600,
-        #00aa00,
-        #39ff14,
-        #00aa00,
-        #006600,
-        #003300,
-        #000000
-      )`;
-    } else {
-      progresoScroll.style.background = "#3300ff"; // Azul fuerte
-      ProyectoPropio.forEach((element) => {
-        element.style.borderColor = "white";
-      });
-      cardInt.style.backgroundImage = `linear-gradient(
-        to right bottom,
-        #ff0000,
-        #ff0045,
-        #ff0078,
-        #ea00aa,
-        #b81cd7,
-        #8a3ad6,
-        #5746cf,
-        #004ac2,
-        #003d94,
-        #002e66,
-        #001d3a,
-        #020812
-      )`;
-    }
+
+    // Estilos condicionales
+    const estilos = {
+      oscuro: {
+        progresoScroll: "#39FF14",
+        linea: "10px dashed #00aa00",
+        borderColorProyecto: "#39FF14",
+        cardBackground: `linear-gradient(to right bottom, #000000, #003300, #006600, #00aa00, #39ff14, #00aa00, #006600, #003300, #000000)`,
+        coverBg: "#006600",
+        coverShadow: "1px 1px 12px #39ff14",
+        bookBg: "black",
+        bookShadow: "1px 1px 12px #39ff14",
+        experienciaBg: "rgba(0, 0, 0, 0.92)",
+        experienciaColor: "#39ff14",
+        tagBg: `linear-gradient(to bottom right, #39ff14, #00aa00)`,
+        hoverShadow: "0 0 25px rgba(0, 255, 0, 0.9)",
+      },
+      claro: {
+        progresoScroll: "#3300ff",
+        linea: "10px dashed #ccc",
+        borderColorProyecto: "white",
+        cardBackground: `linear-gradient(to right bottom, #ff0000, #ff0045, #ff0078, #ea00aa, #b81cd7, #8a3ad6, #5746cf, #004ac2, #003d94, #002e66, #001d3a, #020812)`,
+        coverBg: "rgb(48, 90, 187)",
+        coverShadow: "1px 1px 12px black",
+        bookBg: "rgb(245, 245, 245)",
+        bookShadow: "1px 1px 12px black",
+        experienciaBg: "rgba(182, 182, 182, 0.542)",
+        experienciaColor: "black",
+        tagBg: `linear-gradient(to bottom right, rgb(24, 71, 190), rgb(46, 46, 152))`,
+        hoverShadow: "0 0 20px rgba(255, 255, 255, 0.8)",
+      },
+    };
+
+    const tema = oscuro ? estilos.oscuro : estilos.claro;
+
+    progresoScroll.style.background = tema.progresoScroll;
+    linea.style.borderLeft = tema.linea;
+
+    ProyectoPropio.forEach(
+      (el) => (el.style.borderColor = tema.borderColorProyecto)
+    );
+    cardInt.style.backgroundImage = tema.cardBackground;
+
+    cover.forEach((el) => {
+      el.style.background = tema.coverBg;
+      el.style.boxShadow = tema.coverShadow;
+    });
+
+    book.forEach((el) => {
+      el.style.background = tema.bookBg;
+      el.style.boxShadow = tema.bookShadow;
+    });
+
+    ExperincienaMios.forEach((el) => {
+      el.style.background = tema.experienciaBg;
+      el.style.color = tema.experienciaColor;
+
+      el.onmouseenter = () => {
+        el.style.animation = "none";
+        el.style.transform = "scale(1.05)";
+        el.style.boxShadow = tema.hoverShadow;
+      };
+
+      el.onmouseleave = () => {
+        el.style.animation = "glowPulse 2s infinite";
+        el.style.transform = "scale(1)";
+        el.style.boxShadow = "";
+      };
+    });
+
+    [...InformacionExtra, ...InformacionExtra2].forEach((el) => {
+      el.style.background = tema.experienciaBg;
+    });
+
+    tag.forEach((el) => {
+      el.style.background = tema.tagBg;
+    });
   }
 
   PredeterminadoColor.addEventListener("click", () => {
