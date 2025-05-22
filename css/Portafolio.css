@@ -436,7 +436,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  transition: all 0.6s ease-out;
+  transition: all 5s ease-out;
   overflow: hidden;
 }
 
@@ -543,6 +543,15 @@ body {
 .hello img {
   width: 75px;
   height: 75px;
+}
+.hello iframe {
+  width: 100%;
+  height: 40%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 .MisRedesSociales {
   display: none;

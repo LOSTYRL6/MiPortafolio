@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
   cardInt.addEventListener("mouseenter", () => {
     gsap.to(hello, {
       y: -100,
-      duration: 0.5,
+      duration: 1.5,
       opacity: 0,
       ease: "power2.out",
       onComplete: () => {
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         gsap.to(redes, {
           y: 0,
-          duration: 0.5,
+          duration: 1.5,
           opacity: 1,
           ease: "power2.out",
         });
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
   cardInt.addEventListener("mouseleave", () => {
     gsap.to(redes, {
       y: 100,
-      duration: 0.5,
+      duration: 1.5,
       opacity: 0,
       ease: "power2.in",
       onComplete: () => {
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         gsap.to(hello, {
           y: 0,
-          duration: 0.5,
+          duration: 1.5,
           opacity: 1,
           ease: "power2.out",
         });
