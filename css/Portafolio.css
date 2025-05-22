@@ -54,7 +54,7 @@ body {
 .MiPerfil {
   flex-direction: column;
   width: 50%;
-  height: auto;
+  height: 95%;
   border: solid 1px;
   align-items: center;
   display: none;
@@ -567,6 +567,7 @@ body {
 .PresentacionInfo {
   width: 93%;
   height: 55%;
+  margin: 5px;
 }
 .PresentacionIdioma {
   width: 93%;
@@ -575,6 +576,9 @@ body {
 .PresentacionHobby {
   width: 93%;
   height: 15%;
+}
+.PresentacionInfo p {
+  font-size: 15px;
 }
 .PresentacionInfo h1,
 .PresentacionIdioma h1,
