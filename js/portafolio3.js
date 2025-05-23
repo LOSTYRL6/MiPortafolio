@@ -55,9 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
       currentImageIndex = newIndex;
 
       const images = [
-        "/Imagenes/programacion.png",
-        "/Imagenes/pensando.png",
-        "/Imagenes/comprender.png",
+        "../Imagenes/programacion.png",
+        "../Imagenes/pensando.png",
+        "../Imagenes/comprender.png",
       ];
 
       // Fade out → cambio de imagen → fade in
